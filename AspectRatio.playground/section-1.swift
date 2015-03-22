@@ -1,5 +1,3 @@
-import Cocoa
-
 //let height = 480
 //let width = 320
 
