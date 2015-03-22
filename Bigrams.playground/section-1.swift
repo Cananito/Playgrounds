@@ -1,8 +1,10 @@
 
+// https://twitter.com/_Jordan/status/563553449690673152
+
 func bigrams(text: String) -> [(String, String)] {
-    let words = split(text, { (letter) -> Bool in
+    let words = split(text) { (letter) -> Bool in
         return letter == " "
-    })
+    }
     return Array(Zip2(words, words[1..<words.count]))
 }
 
