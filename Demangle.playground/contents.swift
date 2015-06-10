@@ -1,7 +1,8 @@
 
 func nameOfType(type: Any) -> String? {
     let demangled = _stdlib_getDemangledTypeName(type)
-    return split(demangled) { $0 == "." }.last
+    let a = split(demangled.characters) { $0 == "." }.last
+    return String(a)
 }
 
 class Rogelio {

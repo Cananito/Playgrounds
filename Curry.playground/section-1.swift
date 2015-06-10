@@ -2,7 +2,7 @@
 struct Stick {
 }
 func throwStick(stick: Stick)(power: Int) {
-    println("\(power)")
+    print("\(power)")
 }
 throwStick(Stick())(power: 4)
 
@@ -14,7 +14,7 @@ class Human {
     }
 }
 func identify(human: Human)() {
-    println("\(human.name)")
+    print("\(human.name)")
 }
 identify(Human(name: "Rogelio"))()
 

@@ -17,4 +17,4 @@ dispatch_async(second_queue) {
 
 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-println(x)
+print(x)

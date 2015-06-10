@@ -2,8 +2,8 @@ public extension String {
     public func removedCharactersFromString(string: String) -> String {
         var newString = ""
         
-        for character in self {
-            if string.containsCharacter(character: character) == false {
+        for character in self.characters {
+            if string.containsCharacter(character) == false {
                 newString += String(character)
             }
         }
@@ -11,11 +11,11 @@ public extension String {
         return newString
     }
     
-    public mutating func removeCharactersFromString(#string: String) {
+    public mutating func removeCharactersFromString(string: String) {
         var newString = ""
         
-        for character in self {
-            if string.containsCharacter(character: character) == false {
+        for character in self.characters {
+            if string.containsCharacter(character) == false {
                 newString += String(character)
             }
         }
@@ -23,8 +23,8 @@ public extension String {
         self = newString
     }
     
-    public func containsCharacter(#character: Character) -> Bool {
-        for selfCharacter in self {
+    public func containsCharacter(character: Character) -> Bool {
+        for selfCharacter in self.characters {
             if selfCharacter == character {
                 return true
             }
@@ -32,10 +32,10 @@ public extension String {
         return false
     }
     
-    public func stringByReplacingCharacter(#character: Character, withString: String) -> String {
+    public func stringByReplacingCharacter(character: Character, withString: String) -> String {
         var newString = ""
         
-        for char in self {
+        for char in self.characters {
             if char == character {
                 newString += withString
             } else {
@@ -47,7 +47,7 @@ public extension String {
     }
     
     func toDouble() -> Double? {
-        var components = split(self) { $0 == Character(".") }
+        var components = split(self.characters) { $0 == Character(".") }.map { String($0) }
         
         if components.count == 0 {
             return nil
@@ -58,7 +58,7 @@ public extension String {
         }
         
         var whole = 0.0
-        if let w = components[0].toInt() {
+        if let w = Int(components[0]) {
             whole = Double(w)
         } else {
             return nil
@@ -69,8 +69,8 @@ public extension String {
         }
         
         var fractional = 0.0
-        if let f = components[1].toInt() {
-            var toThePower = count(components[1])
+        if let f = Int(components[1]) {
+            let toThePower = components[1].characters.count
             var denominator = 10.0
             
             if toThePower == 0 {
@@ -103,14 +103,14 @@ let immutableString = "Lalalala"
 let lString = immutableString.removedCharactersFromString("a")
 
 var mutableString = immutableString
-mutableString.removeCharactersFromString(string: "a")
+mutableString.removeCharactersFromString("a")
 
-let containsTrue = immutableString.containsCharacter(character: "a")
-let containsFalse = immutableString.containsCharacter(character: "b")
+let containsTrue = immutableString.containsCharacter("a")
+let containsFalse = immutableString.containsCharacter("b")
 
-let replacedString = immutableString.stringByReplacingCharacter(character: "L", withString: "Ho")
+let replacedString = immutableString.stringByReplacingCharacter("L", withString: "Ho")
 
-let array = split("1,2,3") { $0 == "," }
+let array = split("1,2,3".characters) { $0 == "," }
 array
 
 let numberString = "5.4"

@@ -1,14 +1,16 @@
+
 let userName: String? = "Test"
-let userEmail: String? = "Ok"
+//let userEmail: String? = "Ok"
+let userEmail: String? = nil
 var userIdentity: String?
 
 switch (userName, userEmail) {
-case (.None, .None):
+case (nil, nil):
     userIdentity = "Someone"
-case (let un, let ue):
+case let (.Some(userName), .Some(userEmail)):
     userIdentity = "\(userName) (\(userEmail))"
-case (let un, .None):
-    userIdentity = userName!
-case (.None, let ue):
-    userIdentity = userEmail!
+case let (.Some(userName), nil):
+    userIdentity = userName
+case let (nil, .Some(userEmail)):
+    userIdentity = userEmail
 }

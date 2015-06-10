@@ -40,4 +40,4 @@ if (height == width) {
     aspectRatio = "\(horizontalRatio):\(verticalRatio)"
 }
 
-println(aspectRatio)
+print(aspectRatio)

@@ -31,6 +31,5 @@ let i = h("ok")
 let startIndex = g.startIndex
 let endIndex = g.endIndex
 
-let newEndIndex = advance(startIndex, count(g))
-let newStartIndex = advance(endIndex, -count(g))
-
+let newEndIndex = advance(startIndex, g.characters.count)
+let newStartIndex = advance(endIndex, -g.characters.count)
